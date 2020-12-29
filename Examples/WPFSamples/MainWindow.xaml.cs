@@ -72,7 +72,7 @@ namespace WPFSamples
             ofd.Filter = @"Shapefiles (*.shp)|*.shp";
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                var ds = new SharpMap.Data.Providers.ShapeFile(ofd.FileName);
+                var ds = new SharpMap.Data.Providers.ShapeFile(ofd.FileName, true, true);
                 var lay = new SharpMap.Layers.VectorLayer(System.IO.Path.GetFileNameWithoutExtension(ofd.FileName), ds);
                 if (ds.CoordinateSystem != null)
                 {

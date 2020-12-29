@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormSamples", "Examples\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleCodeSnippets", "Examples\ExampleCodeSnippets\ExampleCodeSnippets.csproj", "{A4184D38-C5A6-4E01-9D1C-8C63791AF825}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpMap.SqlServerSpatialObjects", "SharpMap.SqlServerSpatialObjects\SharpMap.SqlServerSpatialObjects.csproj", "{6D681045-8EF1-44EA-A19D-C7A63A6D0F76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpMap.SqlServerSpatialObjects", "SharpMap.SqlServerSpatialObjects\SharpMap.SqlServerSpatialObjects.csproj", "{6D681045-8EF1-44EA-A19D-C7A63A6D0F76}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpMap.Demo.Wms", "Examples\SharpMap.Demo.Wms\SharpMap.Demo.Wms.csproj", "{7EF67DF8-D868-4177-8817-4CC2E94ABD66}"
 EndProject
@@ -74,6 +74,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpMap.CoordinateSystems.
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpMap.Layers.BruTile", "SharpMap.Layers.BruTile\SharpMap.Layers.BruTile.csproj", "{D84F31ED-3D81-42F2-9190-3D021D6038A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasarDemo", "BasarDemo\BasarDemo.csproj", "{8C64AEC9-F9CC-4D76-96D8-FA36CB9DCB95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -302,6 +304,16 @@ Global
 		{D84F31ED-3D81-42F2-9190-3D021D6038A0}.ReleaseDotNet|Any CPU.Build.0 = Release|Any CPU
 		{D84F31ED-3D81-42F2-9190-3D021D6038A0}.ReleaseLinux|Any CPU.ActiveCfg = Release|Any CPU
 		{D84F31ED-3D81-42F2-9190-3D021D6038A0}.ReleaseLinux|Any CPU.Build.0 = Release|Any CPU
+		{8C64AEC9-F9CC-4D76-96D8-FA36CB9DCB95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C64AEC9-F9CC-4D76-96D8-FA36CB9DCB95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C64AEC9-F9CC-4D76-96D8-FA36CB9DCB95}.DebugDotNet|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C64AEC9-F9CC-4D76-96D8-FA36CB9DCB95}.DebugDotNet|Any CPU.Build.0 = Debug|Any CPU
+		{8C64AEC9-F9CC-4D76-96D8-FA36CB9DCB95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C64AEC9-F9CC-4D76-96D8-FA36CB9DCB95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C64AEC9-F9CC-4D76-96D8-FA36CB9DCB95}.ReleaseDotNet|Any CPU.ActiveCfg = Release|Any CPU
+		{8C64AEC9-F9CC-4D76-96D8-FA36CB9DCB95}.ReleaseDotNet|Any CPU.Build.0 = Release|Any CPU
+		{8C64AEC9-F9CC-4D76-96D8-FA36CB9DCB95}.ReleaseLinux|Any CPU.ActiveCfg = Release|Any CPU
+		{8C64AEC9-F9CC-4D76-96D8-FA36CB9DCB95}.ReleaseLinux|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -313,6 +325,7 @@ Global
 		{7EF67DF8-D868-4177-8817-4CC2E94ABD66} = {480154D8-0960-416E-AE45-AF6B06794F77}
 		{28AC314E-35C1-484B-9DD3-116BD8AFC4EA} = {480154D8-0960-416E-AE45-AF6B06794F77}
 		{E9AC999C-5C90-4851-ABFE-8A9CA899FAEF} = {480154D8-0960-416E-AE45-AF6B06794F77}
+		{8C64AEC9-F9CC-4D76-96D8-FA36CB9DCB95} = {480154D8-0960-416E-AE45-AF6B06794F77}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E37B5837-0C9C-4732-ABE4-50B623CDA3D8}

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net472</TargetFramework>
+        <UseWindowsForms>true</UseWindowsForms>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SharpMap.Extensions\SharpMap.Extensions.csproj" />
+      <ProjectReference Include="..\SharpMap.Layers.BruTile\SharpMap.Layers.BruTile.csproj" />
+      <ProjectReference Include="..\SharpMap.UI\SharpMap.UI.csproj" />
+      <ProjectReference Include="..\SharpMap\SharpMap.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="System.Windows.Forms" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Tools\" />
+    </ItemGroup>
+</Project>
