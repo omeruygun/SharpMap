@@ -1,5 +1,8 @@
-﻿using GeoAPI.Geometries;
+﻿using BasarDemo.Models;
+using GeoAPI.Geometries;
 using NetTopologySuite.IO;
+using Npgsql;
+using Oracle.ManagedDataAccess.Client;
 using OSGeo.OSR;
 using SharpMap.Data.Providers;
 using SharpMap.Forms;
@@ -23,6 +26,62 @@ namespace BasarDemo
 {
     public partial class MainForm : Form
     {
+        public List<DbTableModel> DbTableModels { get; set; } = new List<DbTableModel>();
+        public string ConnectionStringPostgis { get; set; } = "Server = 172.16.11.129; Port = 5432; Database = SUDABIS_MESKI; User Id = sudabis_meski; Password = Basar2020*;";
+        public string ConnectionStringOracle { get; set; } = "User Id=ENERYA;Password=ENERYA;Data Source=BASARORA2";
+        public void AddDbLayer(DbTableModel table)
+        {
+
+            if (!IsLayerOpen(table.TableName))
+            {
+                string idColumn = "MI_PRINX";
+                SharpMap.Layers.VectorLayer lay1 = new SharpMap.Layers.VectorLayer(table.TableName);
+                switch (table.Db.DbType)
+                {
+                    case DbModelType.None:
+                        break;
+                    case DbModelType.Postgresql:
+                        lay1.DataSource = new SharpMap.Data.Providers.PostGIS(Program.mainForm.ConnectionStringPostgis, table.TableName, idColumn);
+                        break;
+                    case DbModelType.Oracle:
+                        lay1.DataSource = new SharpMap.Data.Providers.Oracle(Program.mainForm.ConnectionStringOracle, table.TableName, idColumn);
+                        break;
+                }
+               
+                Random rnd = new Random();
+                int R = rnd.Next(0, 255);
+                int G = rnd.Next(0, 255);
+                int B = rnd.Next(0, 255);
+                Color col = Color.FromArgb(R, G, B);
+                Brush brushColor = new SolidBrush(col);
+                lay1.Style.Outline.Brush = brushColor;
+                Color col2 = Color.FromArgb(255 - R, 255 - G, 255 - B);
+                Brush brushColor2 = new SolidBrush(col2);
+                lay1.Style.Fill = brushColor2;
+                lay1.Style.EnableOutline = true;
+                mapBox1.Map.Layers.Add(lay1);
+                //mapBox1.Map.ZoomToExtents();
+                mapBox1.Refresh();
+
+                table.IsOpen = true;
+
+                LoadLayerList();
+            }
+            
+        }
+
+        private bool IsLayerOpen(string tableName)
+        {
+            foreach (var item in mapBox1.Map.Layers)
+            {
+                if (item.LayerName == tableName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public MainForm()
         {
             InitializeComponent();
@@ -88,7 +147,7 @@ namespace BasarDemo
             mapBox1.Map.Center = new Coordinate(3805545.6472164583, 4534423.3788634948);
             mapBox1.Map.Zoom = 778190;
 
-            mapBox1.Map.BackgroundLayer.Add(osm);
+            //mapBox1.Map.BackgroundLayer.Add(osm);
             mapBox1.Refresh();
         }
 
@@ -657,7 +716,7 @@ namespace BasarDemo
             {
                 mapBox1.Map.Layers.Remove(layer);
                 mapBox1.Refresh();
-           
+
                 LoadLayerList();
             }
         }
@@ -670,6 +729,98 @@ namespace BasarDemo
             {
                 listBoxLayerList.Items.Add(mapBox1.Map.Layers[i].LayerName);
             }
+        }
+
+        private void postgresqlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DbTableListForm form = new DbTableListForm();
+
+            using (NpgsqlConnection cnn = new NpgsqlConnection(this.ConnectionStringPostgis))
+            {
+                cnn.Open();
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter("SELECT f_table_name FROM geometry_columns where f_table_name like '%_geo_%'", cnn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                List<DbTableModel> lst = new List<DbTableModel>();
+                foreach (DataRow row in dt.Rows)
+                {
+                    lst.Add(new DbTableModel()
+                    {
+                        TableName = row[0].ToString(),
+                        Db = new DbModel()
+                        {
+                            ConnectionString = this.ConnectionStringPostgis,
+                            DbType = DbModelType.Postgresql,
+                            Guid = Guid.NewGuid().ToString()
+                        }
+                    });
+                }
+
+                foreach (var item in lst)
+                {
+                    if (!this.DbTableModels.Any(a => a.TableName == item.TableName && a.Db.ConnectionString == item.Db.ConnectionString))
+                    {
+                        this.DbTableModels.Add(item);
+                    }
+                }
+
+            }
+
+            form.checkedListBoxTables.Items.Clear();
+            foreach (var item in this.DbTableModels.Where(a => a.Db.DbType == DbModelType.Postgresql).ToList())
+            {
+                form.checkedListBoxTables.Items.Add(item.TableName, item.IsOpen);
+            }
+            form.TableList = this.DbTableModels.Where(a => a.Db.DbType == DbModelType.Postgresql).ToList();
+
+            form.Owner = this;
+            form.Show();
+        }
+
+        private void oracleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DbTableListForm form = new DbTableListForm();
+
+            using (OracleConnection cnn = new OracleConnection(this.ConnectionStringOracle))
+            {
+                cnn.Open();
+                OracleDataAdapter da = new OracleDataAdapter("Select table_name from user_tables where table_name like '%_GEO_%' order by table_name", cnn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                List<DbTableModel> lst = new List<DbTableModel>();
+                foreach (DataRow row in dt.Rows)
+                {
+                    lst.Add(new DbTableModel()
+                    {
+                        TableName = row[0].ToString(),
+                        Db = new DbModel()
+                        {
+                            ConnectionString = this.ConnectionStringPostgis,
+                            DbType = DbModelType.Oracle,
+                            Guid = Guid.NewGuid().ToString()
+                        }
+                    });
+                }
+
+                foreach (var item in lst)
+                {
+                    if (!this.DbTableModels.Any(a => a.TableName == item.TableName && a.Db.ConnectionString == item.Db.ConnectionString))
+                    {
+                        this.DbTableModels.Add(item);
+                    }
+                }
+
+            }
+
+            form.checkedListBoxTables.Items.Clear();
+            foreach (var item in this.DbTableModels.Where(a => a.Db.DbType == DbModelType.Oracle).ToList())
+            {
+                form.checkedListBoxTables.Items.Add(item.TableName, item.IsOpen);
+            }
+            form.TableList = this.DbTableModels.Where(a => a.Db.DbType == DbModelType.Oracle).ToList();
+
+            form.Owner = this;
+            form.Show();
         }
     }
 }

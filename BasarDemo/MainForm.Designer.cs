@@ -33,29 +33,32 @@ namespace BasarDemo
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readFromCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.queryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.drawPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bMPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ınfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gdalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.driverListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.postgresqlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listBoxLayerList = new System.Windows.Forms.ListBox();
             this.contextMenuStripLayerControl = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemBrowseData = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemZoomToLayer = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItemExport = new System.Windows.Forms.ToolStripMenuItem();
             this.mapInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mapBox1 = new SharpMap.Forms.MapBox();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.queryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zoomInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zoomOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gdalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.driverListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kmlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.drawPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bMPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.styleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pointStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ınfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapBox1 = new SharpMap.Forms.MapBox();
+            this.oracleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStripLayerControl.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +68,8 @@ namespace BasarDemo
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.toolsToolStripMenuItem,
-            this.gdalToolStripMenuItem});
+            this.gdalToolStripMenuItem,
+            this.databaseToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -87,6 +91,108 @@ namespace BasarDemo
             this.readFromCSVToolStripMenuItem.Text = "Read From CSV";
             this.readFromCSVToolStripMenuItem.Click += new System.EventHandler(this.readFromCSVToolStripMenuItem_Click);
             // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.panToolStripMenuItem,
+            this.queryToolStripMenuItem,
+            this.zoomInToolStripMenuItem,
+            this.zoomOutToolStripMenuItem,
+            this.drawPointToolStripMenuItem,
+            this.exportMapToolStripMenuItem,
+            this.ınfoToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // panToolStripMenuItem
+            // 
+            this.panToolStripMenuItem.Name = "panToolStripMenuItem";
+            this.panToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.panToolStripMenuItem.Text = "Pan";
+            this.panToolStripMenuItem.Click += new System.EventHandler(this.panToolStripMenuItem_Click);
+            // 
+            // queryToolStripMenuItem
+            // 
+            this.queryToolStripMenuItem.Name = "queryToolStripMenuItem";
+            this.queryToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.queryToolStripMenuItem.Text = "Query";
+            this.queryToolStripMenuItem.Click += new System.EventHandler(this.queryToolStripMenuItem_Click);
+            // 
+            // zoomInToolStripMenuItem
+            // 
+            this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
+            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.zoomInToolStripMenuItem.Text = "Zoom In";
+            this.zoomInToolStripMenuItem.Click += new System.EventHandler(this.zoomInToolStripMenuItem_Click);
+            // 
+            // zoomOutToolStripMenuItem
+            // 
+            this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
+            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.zoomOutToolStripMenuItem.Text = "Zoom Out";
+            this.zoomOutToolStripMenuItem.Click += new System.EventHandler(this.zoomOutToolStripMenuItem_Click);
+            // 
+            // drawPointToolStripMenuItem
+            // 
+            this.drawPointToolStripMenuItem.Name = "drawPointToolStripMenuItem";
+            this.drawPointToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.drawPointToolStripMenuItem.Text = "Draw Point";
+            this.drawPointToolStripMenuItem.Click += new System.EventHandler(this.drawPointToolStripMenuItem_Click);
+            // 
+            // exportMapToolStripMenuItem
+            // 
+            this.exportMapToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bMPToolStripMenuItem1});
+            this.exportMapToolStripMenuItem.Name = "exportMapToolStripMenuItem";
+            this.exportMapToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.exportMapToolStripMenuItem.Text = "Export Map";
+            // 
+            // bMPToolStripMenuItem1
+            // 
+            this.bMPToolStripMenuItem1.Name = "bMPToolStripMenuItem1";
+            this.bMPToolStripMenuItem1.Size = new System.Drawing.Size(99, 22);
+            this.bMPToolStripMenuItem1.Text = "BMP";
+            this.bMPToolStripMenuItem1.Click += new System.EventHandler(this.bMPToolStripMenuItem1_Click);
+            // 
+            // ınfoToolStripMenuItem
+            // 
+            this.ınfoToolStripMenuItem.Name = "ınfoToolStripMenuItem";
+            this.ınfoToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.ınfoToolStripMenuItem.Text = "Info";
+            this.ınfoToolStripMenuItem.Click += new System.EventHandler(this.ınfoToolStripMenuItem_Click);
+            // 
+            // gdalToolStripMenuItem
+            // 
+            this.gdalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.driverListToolStripMenuItem});
+            this.gdalToolStripMenuItem.Name = "gdalToolStripMenuItem";
+            this.gdalToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.gdalToolStripMenuItem.Text = "Gdal";
+            // 
+            // driverListToolStripMenuItem
+            // 
+            this.driverListToolStripMenuItem.Name = "driverListToolStripMenuItem";
+            this.driverListToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.driverListToolStripMenuItem.Text = "Driver List";
+            this.driverListToolStripMenuItem.Click += new System.EventHandler(this.driverListToolStripMenuItem_Click);
+            // 
+            // databaseToolStripMenuItem
+            // 
+            this.databaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.postgresqlToolStripMenuItem,
+            this.oracleToolStripMenuItem});
+            this.databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
+            this.databaseToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.databaseToolStripMenuItem.Text = "Database";
+            // 
+            // postgresqlToolStripMenuItem
+            // 
+            this.postgresqlToolStripMenuItem.Name = "postgresqlToolStripMenuItem";
+            this.postgresqlToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.postgresqlToolStripMenuItem.Text = "Postgresql";
+            this.postgresqlToolStripMenuItem.Click += new System.EventHandler(this.postgresqlToolStripMenuItem_Click);
+            // 
             // listBoxLayerList
             // 
             this.listBoxLayerList.ContextMenuStrip = this.contextMenuStripLayerControl;
@@ -107,7 +213,7 @@ namespace BasarDemo
             this.styleToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.contextMenuStripLayerControl.Name = "contextMenuStripLayerControl";
-            this.contextMenuStripLayerControl.Size = new System.Drawing.Size(181, 136);
+            this.contextMenuStripLayerControl.Size = new System.Drawing.Size(153, 114);
             // 
             // toolStripMenuItemBrowseData
             // 
@@ -140,6 +246,42 @@ namespace BasarDemo
             this.mapInfoToolStripMenuItem.Text = "MapInfo (.mif)";
             this.mapInfoToolStripMenuItem.Click += new System.EventHandler(this.mapInfoToolStripMenuItem_Click);
             // 
+            // kmlToolStripMenuItem
+            // 
+            this.kmlToolStripMenuItem.Name = "kmlToolStripMenuItem";
+            this.kmlToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.kmlToolStripMenuItem.Text = "Kml";
+            this.kmlToolStripMenuItem.Click += new System.EventHandler(this.kmlToolStripMenuItem_Click);
+            // 
+            // pdfToolStripMenuItem
+            // 
+            this.pdfToolStripMenuItem.Name = "pdfToolStripMenuItem";
+            this.pdfToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.pdfToolStripMenuItem.Text = "Pdf";
+            this.pdfToolStripMenuItem.Click += new System.EventHandler(this.pdfToolStripMenuItem_Click);
+            // 
+            // styleToolStripMenuItem
+            // 
+            this.styleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pointStyleToolStripMenuItem});
+            this.styleToolStripMenuItem.Name = "styleToolStripMenuItem";
+            this.styleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.styleToolStripMenuItem.Text = "Style";
+            // 
+            // pointStyleToolStripMenuItem
+            // 
+            this.pointStyleToolStripMenuItem.Name = "pointStyleToolStripMenuItem";
+            this.pointStyleToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.pointStyleToolStripMenuItem.Text = "Point Style";
+            this.pointStyleToolStripMenuItem.Click += new System.EventHandler(this.pointStyleToolStripMenuItem_Click);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
             // mapBox1
             // 
             this.mapBox1.ActiveTool = SharpMap.Forms.MapBox.Tools.None;
@@ -161,127 +303,12 @@ namespace BasarDemo
             this.mapBox1.Text = "mapBox1";
             this.mapBox1.WheelZoomMagnitude = -2D;
             // 
-            // toolsToolStripMenuItem
+            // oracleToolStripMenuItem
             // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.panToolStripMenuItem,
-            this.queryToolStripMenuItem,
-            this.zoomInToolStripMenuItem,
-            this.zoomOutToolStripMenuItem,
-            this.drawPointToolStripMenuItem,
-            this.exportMapToolStripMenuItem,
-            this.ınfoToolStripMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // panToolStripMenuItem
-            // 
-            this.panToolStripMenuItem.Name = "panToolStripMenuItem";
-            this.panToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.panToolStripMenuItem.Text = "Pan";
-            this.panToolStripMenuItem.Click += new System.EventHandler(this.panToolStripMenuItem_Click);
-            // 
-            // queryToolStripMenuItem
-            // 
-            this.queryToolStripMenuItem.Name = "queryToolStripMenuItem";
-            this.queryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.queryToolStripMenuItem.Text = "Query";
-            this.queryToolStripMenuItem.Click += new System.EventHandler(this.queryToolStripMenuItem_Click);
-            // 
-            // zoomInToolStripMenuItem
-            // 
-            this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
-            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.zoomInToolStripMenuItem.Text = "Zoom In";
-            this.zoomInToolStripMenuItem.Click += new System.EventHandler(this.zoomInToolStripMenuItem_Click);
-            // 
-            // zoomOutToolStripMenuItem
-            // 
-            this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
-            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.zoomOutToolStripMenuItem.Text = "Zoom Out";
-            this.zoomOutToolStripMenuItem.Click += new System.EventHandler(this.zoomOutToolStripMenuItem_Click);
-            // 
-            // gdalToolStripMenuItem
-            // 
-            this.gdalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.driverListToolStripMenuItem});
-            this.gdalToolStripMenuItem.Name = "gdalToolStripMenuItem";
-            this.gdalToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.gdalToolStripMenuItem.Text = "Gdal";
-            // 
-            // driverListToolStripMenuItem
-            // 
-            this.driverListToolStripMenuItem.Name = "driverListToolStripMenuItem";
-            this.driverListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.driverListToolStripMenuItem.Text = "Driver List";
-            this.driverListToolStripMenuItem.Click += new System.EventHandler(this.driverListToolStripMenuItem_Click);
-            // 
-            // kmlToolStripMenuItem
-            // 
-            this.kmlToolStripMenuItem.Name = "kmlToolStripMenuItem";
-            this.kmlToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.kmlToolStripMenuItem.Text = "Kml";
-            this.kmlToolStripMenuItem.Click += new System.EventHandler(this.kmlToolStripMenuItem_Click);
-            // 
-            // pdfToolStripMenuItem
-            // 
-            this.pdfToolStripMenuItem.Name = "pdfToolStripMenuItem";
-            this.pdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pdfToolStripMenuItem.Text = "Pdf";
-            this.pdfToolStripMenuItem.Click += new System.EventHandler(this.pdfToolStripMenuItem_Click);
-            // 
-            // drawPointToolStripMenuItem
-            // 
-            this.drawPointToolStripMenuItem.Name = "drawPointToolStripMenuItem";
-            this.drawPointToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.drawPointToolStripMenuItem.Text = "Draw Point";
-            this.drawPointToolStripMenuItem.Click += new System.EventHandler(this.drawPointToolStripMenuItem_Click);
-            // 
-            // exportMapToolStripMenuItem
-            // 
-            this.exportMapToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bMPToolStripMenuItem1});
-            this.exportMapToolStripMenuItem.Name = "exportMapToolStripMenuItem";
-            this.exportMapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exportMapToolStripMenuItem.Text = "Export Map";
-            // 
-            // bMPToolStripMenuItem1
-            // 
-            this.bMPToolStripMenuItem1.Name = "bMPToolStripMenuItem1";
-            this.bMPToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.bMPToolStripMenuItem1.Text = "BMP";
-            this.bMPToolStripMenuItem1.Click += new System.EventHandler(this.bMPToolStripMenuItem1_Click);
-            // 
-            // styleToolStripMenuItem
-            // 
-            this.styleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pointStyleToolStripMenuItem});
-            this.styleToolStripMenuItem.Name = "styleToolStripMenuItem";
-            this.styleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.styleToolStripMenuItem.Text = "Style";
-            // 
-            // pointStyleToolStripMenuItem
-            // 
-            this.pointStyleToolStripMenuItem.Name = "pointStyleToolStripMenuItem";
-            this.pointStyleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pointStyleToolStripMenuItem.Text = "Point Style";
-            this.pointStyleToolStripMenuItem.Click += new System.EventHandler(this.pointStyleToolStripMenuItem_Click);
-            // 
-            // ınfoToolStripMenuItem
-            // 
-            this.ınfoToolStripMenuItem.Name = "ınfoToolStripMenuItem";
-            this.ınfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ınfoToolStripMenuItem.Text = "Info";
-            this.ınfoToolStripMenuItem.Click += new System.EventHandler(this.ınfoToolStripMenuItem_Click);
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            this.oracleToolStripMenuItem.Name = "oracleToolStripMenuItem";
+            this.oracleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.oracleToolStripMenuItem.Text = "Oracle";
+            this.oracleToolStripMenuItem.Click += new System.EventHandler(this.oracleToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -308,7 +335,6 @@ namespace BasarDemo
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem readFromCSVToolStripMenuItem;
         private System.Windows.Forms.ListBox listBoxLayerList;
-        private SharpMap.Forms.MapBox mapBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripLayerControl;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemBrowseData;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemZoomToLayer;
@@ -330,5 +356,9 @@ namespace BasarDemo
         private System.Windows.Forms.ToolStripMenuItem pointStyleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ınfoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem databaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem postgresqlToolStripMenuItem;
+        public SharpMap.Forms.MapBox mapBox1;
+        private System.Windows.Forms.ToolStripMenuItem oracleToolStripMenuItem;
     }
 }
