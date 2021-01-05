@@ -1,5 +1,8 @@
-﻿using BasarDemoDx.Models;
+﻿using BasarDemoDx.Helpers;
+using BasarDemoDx.Models;
 using DevExpress.XtraEditors;
+using SharpMap.Data;
+using SharpMap.Data.Providers;
 using SharpMap.Layers;
 using System;
 using System.Collections.Generic;
@@ -63,6 +66,46 @@ namespace BasarDemoDx.Forms
 
                     }
                 }
+                ILayer _labelLayer = null;
+                for (int i = 0; i < Program.mainForm.mapBoxMainWindow.Map.Layers.Count; i++)
+                {
+                    if (Program.mainForm.mapBoxMainWindow.Map.Layers[i].LayerName == Table.TableName + "-Label")
+                    {
+                        _labelLayer = Program.mainForm.mapBoxMainWindow.Map.Layers[i];
+                    }
+                }
+                if (_labelLayer != null)
+                {
+                    if ((_labelLayer as LabelLayer).DataSource.GetType().Name == "ShapeFile")
+                    {
+                        var ds = (_labelLayer as LabelLayer).DataSource as ShapeFile;
+                        FeatureDataRow row = ds.GetFeature(0);
+                        List<ControlItemModel> lstColumns = new List<ControlItemModel>();
+                        for (int i = 0; i < row.Table.Columns.Count; i++)
+                        {
+                            lstColumns.Add(new ControlItemModel()
+                            {
+                                Text=row.Table.Columns[i].ColumnName,
+                                Value = row.Table.Columns[i].ColumnName
+                            });
+                        }
+                        DxHelper.FillItems(comboBoxEditLabelColumn, lstColumns, "Choose...");
+                    }else if ((_labelLayer as LabelLayer).DataSource.GetType().Name == "Oracle")
+                    {
+                        var ds = (_labelLayer as LabelLayer).DataSource as SharpMap.Data.Providers.Oracle;
+                        FeatureDataRow row = ds.GetFeature(1);
+                        List<ControlItemModel> lstColumns = new List<ControlItemModel>();
+                        for (int i = 0; i < row.Table.Columns.Count; i++)
+                        {
+                            lstColumns.Add(new ControlItemModel()
+                            {
+                                Text = row.Table.Columns[i].ColumnName,
+                                Value = row.Table.Columns[i].ColumnName
+                            });
+                        }
+                        DxHelper.FillItems(comboBoxEditLabelColumn, lstColumns, "Choose...");
+                    }
+                }
             }
         }
 
@@ -90,6 +133,29 @@ namespace BasarDemoDx.Forms
                         layer.MinVisible = (double)spinEditMinScale.Value;
                     }
                 }
+
+                ILayer _labelLayer = null;
+                for (int i = 0; i < Program.mainForm.mapBoxMainWindow.Map.Layers.Count; i++)
+                {
+                    if (Program.mainForm.mapBoxMainWindow.Map.Layers[i].LayerName == Table.TableName + "-Label")
+                    {
+                        _labelLayer = Program.mainForm.mapBoxMainWindow.Map.Layers[i];
+                    }
+                }
+                if (_labelLayer != null)
+                {
+                    if ((_labelLayer as LabelLayer).DataSource.GetType().Name == "ShapeFile")
+                    {
+                        ControlItemModel selected = DxHelper.GetSelectedItem(comboBoxEditLabelColumn);
+                        (_labelLayer as LabelLayer).LabelColumn = selected.Text;
+                    }
+                    else if ((_labelLayer as LabelLayer).DataSource.GetType().Name == "Oracle")
+                    {
+                        ControlItemModel selected = DxHelper.GetSelectedItem(comboBoxEditLabelColumn);
+                        (_labelLayer as LabelLayer).LabelColumn = selected.Text;
+                    }
+                }
+
                 Program.mainForm.mapBoxMainWindow.Refresh();
             }
         }

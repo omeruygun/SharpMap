@@ -10,6 +10,7 @@
         <Copyright>Copyright 2008-2019 SharpMap - Team</Copyright>
         <PackageTags>SharpMap SpatiaLite</PackageTags>
         <Description>This package contains SharpMap components to work with SpatiaLite databases.</Description>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

@@ -12,6 +12,7 @@
         <Description>This package contains UI Compontents for System.Windows.Forms.</Description>
         <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

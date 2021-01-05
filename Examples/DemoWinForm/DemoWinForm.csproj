@@ -15,6 +15,7 @@
         <StartupObject>DemoWinForm.Program</StartupObject>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <NoWarn>1701;1702;1591</NoWarn>
+        <Platforms>AnyCPU;x64</Platforms>
 
     </PropertyGroup>
 

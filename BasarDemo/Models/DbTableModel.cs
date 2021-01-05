@@ -11,6 +11,7 @@ namespace BasarDemo.Models
         public string TableName { get; set; }
         public DbModel Db { get; set; } = new DbModel();
         public bool IsOpen { get; set; }
+        public string Path { get; set; }
     }
     public class DbModel
     {
@@ -22,6 +23,8 @@ namespace BasarDemo.Models
     {
         None = 0,
         Postgresql = 1,
-        Oracle = 2
+        Oracle = 2,
+        EsriShape = 3,
+        MapInfo = 4
     }
 }

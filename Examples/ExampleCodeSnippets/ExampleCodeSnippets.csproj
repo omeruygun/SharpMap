@@ -9,6 +9,7 @@
         <PackageTags>sharpmap</PackageTags>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <NoWarn>1701;1702;1591;1573</NoWarn>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

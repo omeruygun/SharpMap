@@ -9,6 +9,7 @@
         <Copyright>Copyright 2008-2019 SharpMap - Team</Copyright>
         <PackageTags>SharpMap Reprojection</PackageTags>
         <Description>A coordinate transformation library for SharpMap using DotSpatial.Projections.</Description>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

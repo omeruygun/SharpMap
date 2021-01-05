@@ -10,6 +10,7 @@
         <Description>This package contains the core components of SharpMap.</Description>
         <!--<EnableApiCompat>true</EnableApiCompat>-->
         <NoWarn>1701;1702;2100;2235</NoWarn>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

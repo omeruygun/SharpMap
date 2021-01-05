@@ -78,6 +78,7 @@ namespace BasarDemoDx.Forms
                 var selected = data.Where(a => a.IsOpen).ToList();
                 foreach (var item in selected)
                 {
+                    item.IsLive = toggleSwitchIsLive.IsOn;
                     Program.mainForm.OpenTable(item);
                 }
             }

@@ -9,6 +9,7 @@
         <PackageTags>sharpmap serialization</PackageTags>
         <Description>This package contains objects to serialize SharpMap maps.</Description>
         <NoWarn>$(NoWarn);1591</NoWarn>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

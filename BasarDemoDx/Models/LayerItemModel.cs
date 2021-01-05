@@ -10,5 +10,6 @@ namespace BasarDemoDx.Models
     {
         public bool IsVisible { get; set; }
         public string LayerName { get; set; }
+        public bool IsLabelOpen { get; set; }
     }
 }

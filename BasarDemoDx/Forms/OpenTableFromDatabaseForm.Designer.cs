@@ -38,10 +38,13 @@ namespace BasarDemoDx.Forms
             this.repositoryItemCheckEditTableOpen = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.simpleButtonOpen = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.toggleSwitchIsLive = new DevExpress.XtraEditors.ToggleSwitch();
             this.tableLayoutPanelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditSavedConnection.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeListTableList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEditTableOpen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitchIsLive.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelMain
@@ -51,12 +54,15 @@ namespace BasarDemoDx.Forms
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelMain.Controls.Add(this.labelControl1, 0, 0);
             this.tableLayoutPanelMain.Controls.Add(this.comboBoxEditSavedConnection, 1, 0);
-            this.tableLayoutPanelMain.Controls.Add(this.treeListTableList, 0, 1);
-            this.tableLayoutPanelMain.Controls.Add(this.simpleButtonOpen, 1, 2);
+            this.tableLayoutPanelMain.Controls.Add(this.treeListTableList, 0, 2);
+            this.tableLayoutPanelMain.Controls.Add(this.simpleButtonOpen, 1, 3);
+            this.tableLayoutPanelMain.Controls.Add(this.labelControl2, 0, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.toggleSwitchIsLive, 1, 1);
             this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
-            this.tableLayoutPanelMain.RowCount = 3;
+            this.tableLayoutPanelMain.RowCount = 4;
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
@@ -68,6 +74,7 @@ namespace BasarDemoDx.Forms
             this.labelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelControl1.Location = new System.Drawing.Point(3, 3);
             this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.labelControl1.Size = new System.Drawing.Size(217, 24);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Saved Connection";
@@ -76,10 +83,11 @@ namespace BasarDemoDx.Forms
             // 
             this.comboBoxEditSavedConnection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxEditSavedConnection.Location = new System.Drawing.Point(226, 3);
+            this.comboBoxEditSavedConnection.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.comboBoxEditSavedConnection.Name = "comboBoxEditSavedConnection";
             this.comboBoxEditSavedConnection.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEditSavedConnection.Size = new System.Drawing.Size(218, 20);
+            this.comboBoxEditSavedConnection.Size = new System.Drawing.Size(211, 20);
             this.comboBoxEditSavedConnection.TabIndex = 1;
             this.comboBoxEditSavedConnection.SelectedIndexChanged += new System.EventHandler(this.comboBoxEditSavedConnection_SelectedIndexChanged);
             // 
@@ -90,11 +98,11 @@ namespace BasarDemoDx.Forms
             this.treeListColumn2});
             this.tableLayoutPanelMain.SetColumnSpan(this.treeListTableList, 2);
             this.treeListTableList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeListTableList.Location = new System.Drawing.Point(3, 33);
+            this.treeListTableList.Location = new System.Drawing.Point(3, 63);
             this.treeListTableList.Name = "treeListTableList";
             this.treeListTableList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEditTableOpen});
-            this.treeListTableList.Size = new System.Drawing.Size(441, 322);
+            this.treeListTableList.Size = new System.Drawing.Size(441, 292);
             this.treeListTableList.TabIndex = 2;
             // 
             // treeListColumn1
@@ -125,12 +133,34 @@ namespace BasarDemoDx.Forms
             this.simpleButtonOpen.Dock = System.Windows.Forms.DockStyle.Right;
             this.simpleButtonOpen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButtonOpen.ImageOptions.SvgImage")));
             this.simpleButtonOpen.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
-            this.simpleButtonOpen.Location = new System.Drawing.Point(322, 361);
+            this.simpleButtonOpen.Location = new System.Drawing.Point(315, 361);
+            this.simpleButtonOpen.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.simpleButtonOpen.Name = "simpleButtonOpen";
             this.simpleButtonOpen.Size = new System.Drawing.Size(122, 29);
             this.simpleButtonOpen.TabIndex = 3;
             this.simpleButtonOpen.Text = "Apply";
             this.simpleButtonOpen.Click += new System.EventHandler(this.simpleButtonOpen_Click);
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelControl2.Location = new System.Drawing.Point(3, 33);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.labelControl2.Size = new System.Drawing.Size(217, 24);
+            this.labelControl2.TabIndex = 4;
+            this.labelControl2.Text = "Is Live";
+            // 
+            // toggleSwitchIsLive
+            // 
+            this.toggleSwitchIsLive.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleSwitchIsLive.EditValue = true;
+            this.toggleSwitchIsLive.Location = new System.Drawing.Point(226, 33);
+            this.toggleSwitchIsLive.Name = "toggleSwitchIsLive";
+            this.toggleSwitchIsLive.Properties.OffText = "Off";
+            this.toggleSwitchIsLive.Properties.OnText = "On";
+            this.toggleSwitchIsLive.Size = new System.Drawing.Size(218, 24);
+            this.toggleSwitchIsLive.TabIndex = 5;
             // 
             // OpenTableFromDatabaseForm
             // 
@@ -147,6 +177,7 @@ namespace BasarDemoDx.Forms
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditSavedConnection.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeListTableList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEditTableOpen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitchIsLive.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -161,5 +192,7 @@ namespace BasarDemoDx.Forms
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEditTableOpen;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
         private DevExpress.XtraEditors.SimpleButton simpleButtonOpen;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.ToggleSwitch toggleSwitchIsLive;
     }
 }

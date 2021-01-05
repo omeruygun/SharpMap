@@ -12,6 +12,7 @@
         <OutputType>WinExe</OutputType>
         <StartupObject />
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

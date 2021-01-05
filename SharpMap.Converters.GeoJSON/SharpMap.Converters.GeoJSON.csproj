@@ -9,6 +9,7 @@
         <Copyright>Copyright 2008-2019 SharpMap - Team</Copyright>
         <PackageTags>SharpMap GeoJson</PackageTags>
         <Description>This package contains SharpMap components to work with GeoJSON.</Description>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

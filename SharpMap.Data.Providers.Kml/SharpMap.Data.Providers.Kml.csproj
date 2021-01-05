@@ -9,6 +9,7 @@
         <PackageTags>sharpmap kml kmz</PackageTags>
         <Description>The package contains a base map layer solution based on BruTile.</Description>
         <NoWarn>1063</NoWarn>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

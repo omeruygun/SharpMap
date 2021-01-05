@@ -10,6 +10,7 @@
             Copyright © 2008-2019 SharpMap - Team</Copyright>
         <PackageTags>sharpmap ajax</PackageTags>
         <Description>This package contains UI Compontents for Ajax Web.</Description>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

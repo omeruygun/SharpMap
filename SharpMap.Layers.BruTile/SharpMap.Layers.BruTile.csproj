@@ -8,6 +8,7 @@
         <Copyright>Copyright (c) 2011 - 2019 SharpMap - Team</Copyright>
         <PackageTags>sharpmap brutile basemap</PackageTags>
         <Description>The package contains a base map layer solution based on BruTile.</Description>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,11 +1,18 @@
 ﻿using BasarDemoDx.Forms;
+using BasarDemoDx.Helpers;
 using BasarDemoDx.Models;
+using BruTile.Predefined;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Menu;
 using DevExpress.XtraTreeList.Nodes;
+using GeoAPI.Geometries;
+using SharpMap.Converters.WellKnownText;
+using SharpMap.CoordinateSystems;
+using SharpMap.Data;
+using SharpMap.Data.Providers;
 using SharpMap.Layers;
 using System;
 using System.Collections.Generic;
@@ -28,9 +35,14 @@ namespace BasarDemoDx
             InitializeComponent();
             mapBoxMainWindow.Map.LayerRendering += Map_LayerRendering;
             mapBoxMainWindow.Map.LayerRenderedEx += Map_LayerRendered;
+            mapBoxMainWindow.MouseMove += MapBoxMainWindow_MouseMove;
+            mapBoxMainWindow.GeometryDefined += MapBoxMainWindow_GeometryDefined;
         }
 
-
+        private void MapBoxMainWindow_MouseMove(GeoAPI.Geometries.Coordinate worldPos, MouseEventArgs imagePos)
+        {
+            barStaticItemMousePosition.Caption = worldPos.X + " / " + worldPos.Y;
+        }
 
         private void barButtonItemConnectToDb_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -60,6 +72,15 @@ namespace BasarDemoDx
                         break;
                     case Models.DbType.Oracle:
                         lay1.DataSource = new SharpMap.Data.Providers.Oracle("User Id=" + item.Connection.Username + ";Password=" + item.Connection.Password + ";Data Source=" + item.Connection.HostOrIp + "", item.TableName, item.UniqColumnName);
+                        break;
+                    case Models.DbType.EsriShape:
+                        lay1.DataSource = new SharpMap.Data.Providers.ShapeFile(item.SavePath, true);
+                        break;
+                    case Models.DbType.MapInfo:
+
+                        //lay1.DataSource = dataSource.GetLayerByIndex(0) as VectorLayer;
+
+                        lay1.DataSource = new SharpMap.Data.Providers.Ogr(item.SavePath);
                         break;
                 }
 
@@ -99,11 +120,16 @@ namespace BasarDemoDx
             List<LayerItemModel> lst = new List<LayerItemModel>();
             for (int i = 0; i < mapBoxMainWindow.Map.Layers.Count; i++)
             {
-                lst.Add(new LayerItemModel()
+                if (mapBoxMainWindow.Map.Layers[i].LayerName.IndexOf("-Label") < 0)
                 {
-                    IsVisible = mapBoxMainWindow.Map.Layers[i].Enabled,
-                    LayerName = mapBoxMainWindow.Map.Layers[i].LayerName
-                });
+                    lst.Add(new LayerItemModel()
+                    {
+                        IsVisible = mapBoxMainWindow.Map.Layers[i].Enabled,
+                        LayerName = mapBoxMainWindow.Map.Layers[i].LayerName,
+                        IsLabelOpen = mapBoxMainWindow.Map.Layers.Any(async => async.LayerName == mapBoxMainWindow.Map.Layers[i].LayerName + "-Label")
+                    });
+                }
+
             }
             treeListLayerList.DataSource = lst;
         }
@@ -143,7 +169,10 @@ namespace BasarDemoDx
 
                 menuItemClose.Click += MenuItemClose_Click; ;
 
-                menu.Items.Add(menuItemClose);
+                if (data.LayerName != "Cosmetic Layer")
+                {
+                    menu.Items.Add(menuItemClose);
+                }
 
                 DXMenuItem menuItemProperties = new DXMenuItem("Properties");
                 menuItemProperties.Tag = Newtonsoft.Json.JsonConvert.SerializeObject(data);
@@ -151,6 +180,16 @@ namespace BasarDemoDx
                 menuItemProperties.Click += MenuItemProperties_Click;
 
                 menu.Items.Add(menuItemProperties);
+
+                if (data.LayerName == "Cosmetic Layer")
+                {
+                    DXMenuItem menuItemClearCosmetic = new DXMenuItem("Clear Cosmetic Layer");
+                    menuItemClearCosmetic.Tag = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+
+                    menuItemClearCosmetic.Click += MenuItemClearCosmetic_Click;
+
+                    menu.Items.Add(menuItemClearCosmetic);
+                }
 
                 menu.Show(e.Location);
 
@@ -160,6 +199,8 @@ namespace BasarDemoDx
                 return;
             }
         }
+
+
 
         private void MenuItemProperties_Click(object sender, EventArgs e)
         {
@@ -192,6 +233,11 @@ namespace BasarDemoDx
             }
             if (_removeLayer != null)
             {
+                if (_removeLayer.LayerName == "Cosmetic Layer")
+                {
+                    XtraMessageBox.Show("You dont close cosmetic layer !!!");
+                    return;
+                }
                 mapBoxMainWindow.Map.Layers.Remove(_removeLayer);
 
                 var rec = this.OpenedTables.FirstOrDefault(async => async.TableName == layer.LayerName);
@@ -420,6 +466,163 @@ namespace BasarDemoDx
 
                 LoadLayerList();
             }
+        }
+
+        private void barButtonItemBingRoad_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            TileAsyncLayer bingLayer = new TileAsyncLayer(KnownTileSources.Create(KnownTileSource.BingRoadsStaging), "TileLayer - Bing");
+
+            if (mapBoxMainWindow.Map.BackgroundLayer.Count <= 0)
+            {
+                this.mapBoxMainWindow.Map.BackgroundLayer.Add(bingLayer);
+                mapBoxMainWindow.Refresh();
+            }
+            else
+            {
+                this.mapBoxMainWindow.Map.BackgroundLayer.Remove(this.mapBoxMainWindow.Map.BackgroundLayer[0]);
+                mapBoxMainWindow.Refresh();
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            SharpMap.Layers.VectorLayer vl = new VectorLayer("Cosmetic Layer");
+            var geoProvider = new SharpMap.Data.Providers.GeometryProvider(new List<IGeometry>());
+            vl.DataSource = geoProvider;
+            this.mapBoxMainWindow.Map.Layers.Add(vl);
+            LoadLayerList();
+        }
+        private void MapBoxMainWindow_GeometryDefined(IGeometry geometry)
+        {
+            ILayer layer = null;
+            for (int i = 0; i < mapBoxMainWindow.Map.Layers.Count; i++)
+            {
+                if (mapBoxMainWindow.Map.Layers[i].LayerName == "Cosmetic Layer")
+                {
+                    layer = mapBoxMainWindow.Map.Layers[i];
+                }
+            }
+            switch (ActiveCustomDrawingTool.Tool)
+            {
+                case DrawingTools.None:
+                    break;
+                case DrawingTools.Point:
+                    if (layer != null)
+                    {
+                        var geoProvider = ((layer as VectorLayer).DataSource as GeometryProvider);
+                        geoProvider.Geometries.Add(geometry);
+                        mapBoxMainWindow.ActiveTool = SharpMap.Forms.MapBox.Tools.Pan;
+                        mapBoxMainWindow.Refresh();
+                    }
+                    break;
+            }
+        }
+        private void MenuItemClearCosmetic_Click(object sender, EventArgs e)
+        {
+            ILayer layer = null;
+            for (int i = 0; i < mapBoxMainWindow.Map.Layers.Count; i++)
+            {
+                if (mapBoxMainWindow.Map.Layers[i].LayerName == "Cosmetic Layer")
+                {
+                    layer = mapBoxMainWindow.Map.Layers[i];
+                }
+            }
+            if (layer != null)
+            {
+                var geoProvider = ((layer as VectorLayer).DataSource as GeometryProvider);
+                geoProvider.Geometries.Clear();
+                mapBoxMainWindow.Refresh();
+            }
+        }
+        private void barButtonItemDrawPoint_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.mapBoxMainWindow.ActiveTool = SharpMap.Forms.MapBox.Tools.DrawPoint;
+            ActiveCustomDrawingTool.Tool = DrawingTools.Point;
+        }
+
+        private void barButtonItemOpenShape_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            DbTableModelItem model = new DbTableModelItem();
+
+            OpenFileDialog file = new OpenFileDialog();
+            file.Filter = "Esri Shape File|*.shp";
+
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                model.Connection = new DbConnectionModel();
+                model.Connection.DatabaseType = Models.DbType.EsriShape;
+                model.SavePath = file.FileName;
+                model.TableName = Path.GetFileNameWithoutExtension(file.FileName);
+
+                OpenTable(model);
+            }
+        }
+
+        private void barButtonItemOpenMapInfo_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            DbTableModelItem model = new DbTableModelItem();
+
+            OpenFileDialog file = new OpenFileDialog();
+            file.Filter = "MapInfo File (.Tab)|*.tab";
+
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                model.Connection = new DbConnectionModel();
+                model.Connection.DatabaseType = Models.DbType.MapInfo;
+                model.SavePath = file.FileName;
+                model.TableName = Path.GetFileNameWithoutExtension(file.FileName);
+
+                OpenTable(model);
+            }
+        }
+
+        private void repositoryItemCheckEditLayerLabel_CheckedChanged(object sender, EventArgs e)
+        {
+            var checkEdit = sender as CheckEdit;
+
+            TreeListHitInfo hitInfo = treeListLayerList.CalcHitInfo(checkEdit.Location);
+
+            var data = treeListLayerList.GetRow(hitInfo.Node.Id) as LayerItemModel;
+
+            ILayer _layer = null;
+            ILayer _labelLayer = null;
+
+            foreach (var item in mapBoxMainWindow.Map.Layers)
+            {
+                if (item.LayerName == data.LayerName)
+                {
+                    _layer = item;
+                }
+                if (item.LayerName == data.LayerName + "-Label")
+                {
+                    _labelLayer = item;
+                }
+            }
+
+            if (_labelLayer != null)
+            {
+                mapBoxMainWindow.Map.Layers.Remove(_labelLayer);
+            }
+            else
+            {
+                var labelLayer = new LabelLayer(_layer.LayerName + "-Label");
+                labelLayer.DataSource = (_layer as VectorLayer).DataSource;
+                if (labelLayer.DataSource.GetType().Name == "ShapeFile")
+                {
+                    var ds = labelLayer.DataSource as ShapeFile;
+                    FeatureDataRow row = ds.GetFeature(0);
+                    labelLayer.LabelColumn = row.Table.Columns[0].ColumnName;
+                }
+                else if (labelLayer.DataSource.GetType().Name == "Oracle")
+                {
+                    var ds = labelLayer.DataSource as SharpMap.Data.Providers.Oracle;
+                    FeatureDataRow row = ds.GetFeature(1);
+                    labelLayer.LabelColumn = row.Table.Columns[0].ColumnName;
+                }
+                mapBoxMainWindow.Map.Layers.Add(labelLayer);
+            }
+
+            mapBoxMainWindow.Refresh();
         }
     }
 }

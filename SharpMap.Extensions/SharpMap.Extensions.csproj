@@ -11,6 +11,7 @@
         <NoWarn>1701;1702;2100;2235</NoWarn>
         <RootNamespace>SharpMap</RootNamespace>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

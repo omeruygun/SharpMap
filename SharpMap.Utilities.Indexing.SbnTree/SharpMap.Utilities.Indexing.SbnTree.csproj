@@ -8,6 +8,7 @@
         <PackageTags>index sbn shapefile</PackageTags>
         <Description>The package contains a shapefile spatial indexing solution base on SharpSbn</Description>
         <RootNamespace>SharpMap.Utilities.Indexing</RootNamespace>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

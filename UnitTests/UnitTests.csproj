@@ -13,6 +13,7 @@
         <GeneratePackage>false</GeneratePackage>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <Configurations>Debug;Release;ReleaseLinux</Configurations>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)'=='ReleaseLinux'">

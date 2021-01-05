@@ -46,6 +46,9 @@ namespace BasarDemo
                     case DbModelType.Oracle:
                         lay1.DataSource = new SharpMap.Data.Providers.Oracle(Program.mainForm.ConnectionStringOracle, table.TableName, idColumn);
                         break;
+                    case DbModelType.EsriShape:
+                        lay1.DataSource = new SharpMap.Data.Providers.ShapeFile(table.Path);
+                        break;
                 }
                
                 Random rnd = new Random();

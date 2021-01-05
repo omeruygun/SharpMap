@@ -34,7 +34,7 @@ namespace BasarDemoDx
             DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.document1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
-            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemGeocodeWkt = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemPan = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemQuery = new DevExpress.XtraBars.BarButtonItem();
@@ -46,11 +46,21 @@ namespace BasarDemoDx
             this.barButtonItemZoomToExtends = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemCloseLayer = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItemMapZoom = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItemSaveWorkspace = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemOpenWorkspace = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItemMousePosition = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItemBingRoad = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemDrawPoint = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItemOpen = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItemOpenShape = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemOpenMapInfo = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGeneral = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupTools = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupDatabase = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.ribbonPageGroupBackgroundLayers = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupDrawing = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonStatusBarMain = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
@@ -63,11 +73,11 @@ namespace BasarDemoDx
             this.dockPanel2 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.mapBoxMainWindow = new SharpMap.Forms.MapBox();
-            this.barButtonItemSaveWorkspace = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemOpenWorkspace = new DevExpress.XtraBars.BarButtonItem();
+            this.repositoryItemCheckEditLayerLabel = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.treeListColumnLabelColumn = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -77,6 +87,7 @@ namespace BasarDemoDx
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEditIsOpen)).BeginInit();
             this.dockPanel2.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEditLayerLabel)).BeginInit();
             this.SuspendLayout();
             // 
             // documentGroup1
@@ -94,12 +105,12 @@ namespace BasarDemoDx
             this.document1.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
             this.document1.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             // 
-            // ribbonControl1
+            // ribbonControlMain
             // 
-            this.ribbonControl1.ExpandCollapseItem.Id = 0;
-            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbonControl1.ExpandCollapseItem,
-            this.ribbonControl1.SearchEditItem,
+            this.ribbonControlMain.ExpandCollapseItem.Id = 0;
+            this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ribbonControlMain.ExpandCollapseItem,
+            this.ribbonControlMain.SearchEditItem,
             this.barButtonItemGeocodeWkt,
             this.barButtonItemPan,
             this.barButtonItemQuery,
@@ -112,14 +123,20 @@ namespace BasarDemoDx
             this.barButtonItemCloseLayer,
             this.barStaticItemMapZoom,
             this.barButtonItemSaveWorkspace,
-            this.barButtonItemOpenWorkspace});
-            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 14;
-            this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.barButtonItemOpenWorkspace,
+            this.barStaticItemMousePosition,
+            this.barButtonItemBingRoad,
+            this.barButtonItemDrawPoint,
+            this.barSubItemOpen,
+            this.barButtonItemOpenShape,
+            this.barButtonItemOpenMapInfo});
+            this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControlMain.MaxItemId = 21;
+            this.ribbonControlMain.Name = "ribbonControlMain";
+            this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageGeneral});
-            this.ribbonControl1.Size = new System.Drawing.Size(1138, 150);
-            this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
+            this.ribbonControlMain.Size = new System.Drawing.Size(1138, 150);
+            this.ribbonControlMain.StatusBar = this.ribbonStatusBarMain;
             // 
             // barButtonItemGeocodeWkt
             // 
@@ -201,12 +218,79 @@ namespace BasarDemoDx
             this.barStaticItemMapZoom.Id = 11;
             this.barStaticItemMapZoom.Name = "barStaticItemMapZoom";
             // 
+            // barButtonItemSaveWorkspace
+            // 
+            this.barButtonItemSaveWorkspace.Caption = "Save Workspace";
+            this.barButtonItemSaveWorkspace.Id = 12;
+            this.barButtonItemSaveWorkspace.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSaveWorkspace.ImageOptions.SvgImage")));
+            this.barButtonItemSaveWorkspace.Name = "barButtonItemSaveWorkspace";
+            this.barButtonItemSaveWorkspace.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSaveWorkspace_ItemClick);
+            // 
+            // barButtonItemOpenWorkspace
+            // 
+            this.barButtonItemOpenWorkspace.Caption = "Open Workspace";
+            this.barButtonItemOpenWorkspace.Id = 13;
+            this.barButtonItemOpenWorkspace.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenWorkspace.ImageOptions.SvgImage")));
+            this.barButtonItemOpenWorkspace.Name = "barButtonItemOpenWorkspace";
+            this.barButtonItemOpenWorkspace.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemOpenWorkspace_ItemClick);
+            // 
+            // barStaticItemMousePosition
+            // 
+            this.barStaticItemMousePosition.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barStaticItemMousePosition.Caption = "-";
+            this.barStaticItemMousePosition.Id = 14;
+            this.barStaticItemMousePosition.Name = "barStaticItemMousePosition";
+            // 
+            // barButtonItemBingRoad
+            // 
+            this.barButtonItemBingRoad.Caption = "Bing Road";
+            this.barButtonItemBingRoad.Id = 15;
+            this.barButtonItemBingRoad.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemBingRoad.ImageOptions.SvgImage")));
+            this.barButtonItemBingRoad.Name = "barButtonItemBingRoad";
+            this.barButtonItemBingRoad.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemBingRoad_ItemClick);
+            // 
+            // barButtonItemDrawPoint
+            // 
+            this.barButtonItemDrawPoint.Caption = "Point";
+            this.barButtonItemDrawPoint.Id = 16;
+            this.barButtonItemDrawPoint.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemDrawPoint.ImageOptions.SvgImage")));
+            this.barButtonItemDrawPoint.Name = "barButtonItemDrawPoint";
+            this.barButtonItemDrawPoint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDrawPoint_ItemClick);
+            // 
+            // barSubItemOpen
+            // 
+            this.barSubItemOpen.Caption = "Open";
+            this.barSubItemOpen.Id = 18;
+            this.barSubItemOpen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItemOpen.ImageOptions.SvgImage")));
+            this.barSubItemOpen.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemOpenShape),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemOpenMapInfo)});
+            this.barSubItemOpen.Name = "barSubItemOpen";
+            // 
+            // barButtonItemOpenShape
+            // 
+            this.barButtonItemOpenShape.Caption = "Shape";
+            this.barButtonItemOpenShape.Id = 19;
+            this.barButtonItemOpenShape.ImageOptions.SvgImage = global::BasarDemoDx.Properties.Resources.shapeFile;
+            this.barButtonItemOpenShape.Name = "barButtonItemOpenShape";
+            this.barButtonItemOpenShape.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemOpenShape_ItemClick);
+            // 
+            // barButtonItemOpenMapInfo
+            // 
+            this.barButtonItemOpenMapInfo.Caption = "MapInfo";
+            this.barButtonItemOpenMapInfo.Id = 20;
+            this.barButtonItemOpenMapInfo.ImageOptions.SvgImage = global::BasarDemoDx.Properties.Resources.mapinfoFile;
+            this.barButtonItemOpenMapInfo.Name = "barButtonItemOpenMapInfo";
+            this.barButtonItemOpenMapInfo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemOpenMapInfo_ItemClick);
+            // 
             // ribbonPageGeneral
             // 
             this.ribbonPageGeneral.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
             this.ribbonPageGroupTools,
-            this.ribbonPageGroupDatabase});
+            this.ribbonPageGroupDatabase,
+            this.ribbonPageGroupBackgroundLayers,
+            this.ribbonPageGroupDrawing});
             this.ribbonPageGeneral.Name = "ribbonPageGeneral";
             this.ribbonPageGeneral.Text = "General";
             // 
@@ -215,6 +299,7 @@ namespace BasarDemoDx
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemGeocodeWkt);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemSaveWorkspace);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemOpenWorkspace);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barSubItemOpen);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "General";
             // 
@@ -235,18 +320,31 @@ namespace BasarDemoDx
             this.ribbonPageGroupDatabase.Name = "ribbonPageGroupDatabase";
             this.ribbonPageGroupDatabase.Text = "Dabase";
             // 
-            // ribbonStatusBar1
+            // ribbonPageGroupBackgroundLayers
             // 
-            this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItemMapZoom);
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 441);
-            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
-            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(856, 27);
+            this.ribbonPageGroupBackgroundLayers.ItemLinks.Add(this.barButtonItemBingRoad);
+            this.ribbonPageGroupBackgroundLayers.Name = "ribbonPageGroupBackgroundLayers";
+            this.ribbonPageGroupBackgroundLayers.Text = "Background Layers";
+            // 
+            // ribbonPageGroupDrawing
+            // 
+            this.ribbonPageGroupDrawing.ItemLinks.Add(this.barButtonItemDrawPoint);
+            this.ribbonPageGroupDrawing.Name = "ribbonPageGroupDrawing";
+            this.ribbonPageGroupDrawing.Text = "Drawing";
+            // 
+            // ribbonStatusBarMain
+            // 
+            this.ribbonStatusBarMain.ItemLinks.Add(this.barStaticItemMapZoom);
+            this.ribbonStatusBarMain.ItemLinks.Add(this.barStaticItemMousePosition);
+            this.ribbonStatusBarMain.Location = new System.Drawing.Point(0, 441);
+            this.ribbonStatusBarMain.Name = "ribbonStatusBarMain";
+            this.ribbonStatusBarMain.Ribbon = this.ribbonControlMain;
+            this.ribbonStatusBarMain.Size = new System.Drawing.Size(856, 27);
             // 
             // documentManager1
             // 
             this.documentManager1.ContainerControl = this;
-            this.documentManager1.MenuManager = this.ribbonControl1;
+            this.documentManager1.MenuManager = this.ribbonControlMain;
             this.documentManager1.View = this.tabbedView1;
             this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
@@ -304,13 +402,15 @@ namespace BasarDemoDx
             // 
             this.treeListLayerList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumnIsVisible,
-            this.treeListColumn1});
+            this.treeListColumn1,
+            this.treeListColumnLabelColumn});
             this.treeListLayerList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeListLayerList.Location = new System.Drawing.Point(0, 0);
-            this.treeListLayerList.MenuManager = this.ribbonControl1;
+            this.treeListLayerList.MenuManager = this.ribbonControlMain;
             this.treeListLayerList.Name = "treeListLayerList";
             this.treeListLayerList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEditIsOpen});
+            this.repositoryItemCheckEditIsOpen,
+            this.repositoryItemCheckEditLayerLabel});
             this.treeListLayerList.Size = new System.Drawing.Size(269, 468);
             this.treeListLayerList.TabIndex = 3;
             this.treeListLayerList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeListLayerList_MouseDown);
@@ -339,7 +439,7 @@ namespace BasarDemoDx
             this.treeListColumn1.OptionsColumn.AllowEdit = false;
             this.treeListColumn1.Visible = true;
             this.treeListColumn1.VisibleIndex = 1;
-            this.treeListColumn1.Width = 214;
+            this.treeListColumn1.Width = 187;
             // 
             // dockPanel2
             // 
@@ -353,7 +453,7 @@ namespace BasarDemoDx
             // 
             // dockPanel2_Container
             // 
-            this.dockPanel2_Container.Controls.Add(this.ribbonStatusBar1);
+            this.dockPanel2_Container.Controls.Add(this.ribbonStatusBarMain);
             this.dockPanel2_Container.Controls.Add(this.mapBoxMainWindow);
             this.dockPanel2_Container.Location = new System.Drawing.Point(0, 0);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
@@ -390,21 +490,21 @@ namespace BasarDemoDx
             this.mapBoxMainWindow.MapQueryDone += new System.EventHandler(this.mapBoxMainWindow_MapQueryDone);
             this.mapBoxMainWindow.LocationChanged += new System.EventHandler(this.mapBoxMainWindow_LocationChanged);
             // 
-            // barButtonItemSaveWorkspace
+            // repositoryItemCheckEditLayerLabel
             // 
-            this.barButtonItemSaveWorkspace.Caption = "Save Workspace";
-            this.barButtonItemSaveWorkspace.Id = 12;
-            this.barButtonItemSaveWorkspace.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSaveWorkspace.ImageOptions.SvgImage")));
-            this.barButtonItemSaveWorkspace.Name = "barButtonItemSaveWorkspace";
-            this.barButtonItemSaveWorkspace.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSaveWorkspace_ItemClick);
+            this.repositoryItemCheckEditLayerLabel.AutoHeight = false;
+            this.repositoryItemCheckEditLayerLabel.Name = "repositoryItemCheckEditLayerLabel";
+            this.repositoryItemCheckEditLayerLabel.CheckedChanged += new System.EventHandler(this.repositoryItemCheckEditLayerLabel_CheckedChanged);
             // 
-            // barButtonItemOpenWorkspace
+            // treeListColumnLabelColumn
             // 
-            this.barButtonItemOpenWorkspace.Caption = "Open Workspace";
-            this.barButtonItemOpenWorkspace.Id = 13;
-            this.barButtonItemOpenWorkspace.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenWorkspace.ImageOptions.SvgImage")));
-            this.barButtonItemOpenWorkspace.Name = "barButtonItemOpenWorkspace";
-            this.barButtonItemOpenWorkspace.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemOpenWorkspace_ItemClick);
+            this.treeListColumnLabelColumn.Caption = "Label";
+            this.treeListColumnLabelColumn.ColumnEdit = this.repositoryItemCheckEditLayerLabel;
+            this.treeListColumnLabelColumn.FieldName = "IsLabelOpen";
+            this.treeListColumnLabelColumn.Name = "treeListColumnLabelColumn";
+            this.treeListColumnLabelColumn.Visible = true;
+            this.treeListColumnLabelColumn.VisibleIndex = 2;
+            this.treeListColumnLabelColumn.Width = 30;
             // 
             // MainForm
             // 
@@ -412,12 +512,13 @@ namespace BasarDemoDx
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 647);
             this.Controls.Add(this.dockPanel1);
-            this.Controls.Add(this.ribbonControl1);
+            this.Controls.Add(this.ribbonControlMain);
             this.Name = "MainForm";
             this.Text = "Basar Demo Map";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
@@ -427,6 +528,7 @@ namespace BasarDemoDx
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEditIsOpen)).EndInit();
             this.dockPanel2.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEditLayerLabel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -434,7 +536,7 @@ namespace BasarDemoDx
 
         #endregion
 
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
+        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControlMain;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageGeneral;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
@@ -463,9 +565,19 @@ namespace BasarDemoDx
         private DevExpress.XtraBars.BarButtonItem barButtonItemZoomToExtends;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCloseLayer;
         private DevExpress.XtraBars.BarStaticItem barStaticItemMapZoom;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
+        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBarMain;
         public SharpMap.Forms.MapBox mapBoxMainWindow;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSaveWorkspace;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenWorkspace;
+        private DevExpress.XtraBars.BarStaticItem barStaticItemMousePosition;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemBingRoad;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupBackgroundLayers;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDrawPoint;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupDrawing;
+        private DevExpress.XtraBars.BarSubItem barSubItemOpen;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenShape;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenMapInfo;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnLabelColumn;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEditLayerLabel;
     }
 }

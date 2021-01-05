@@ -24,6 +24,8 @@ namespace BasarDemoDx.Models
     {
         None = 0,
         PostgreSQL = 1,
-        Oracle = 2
+        Oracle = 2,
+        EsriShape = 3,
+        MapInfo = 4
     }
 }

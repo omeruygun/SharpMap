@@ -12,5 +12,8 @@ namespace BasarDemoDx.Models
         public string TableName { get; set; }
         public DbConnectionModel Connection { get; set; }
         public string UniqColumnName { get; set; } = "MI_PRINX";
+        public bool IsLive { get; set; } = true;
+        public string SavePath { get; set; }
+        public bool IsLabelOpen { get; internal set; }
     }
 }

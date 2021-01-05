@@ -9,6 +9,7 @@
         <Copyright>Copyright 2013-2019 SharpMap - Team</Copyright>
         <PackageTags>SharpMap Heat</PackageTags>
         <Description>Heat layer for SharpMap.</Description>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>
